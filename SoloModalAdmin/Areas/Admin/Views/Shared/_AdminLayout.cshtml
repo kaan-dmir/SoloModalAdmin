@@ -1,0 +1,37 @@
+﻿
+<html>
+
+@await Html.PartialAsync("Admin/_AdminHead")
+
+<body>
+    <!-- Sidenav -->
+    @await Html.PartialAsync("Admin/_AdminSidenav")
+    <!-- Main content -->
+    <div class="main-content" id="panel">
+        <!-- Topnav -->
+        @await Html.PartialAsync("Admin/_AdminTopnav")
+        <!-- Header -->
+        @await Html.PartialAsync("Admin/_AdminHeader")
+        <!-- Page content -->
+        <div class="container-fluid mt--6">
+            <div class="row">
+                <div class="col">
+                    <div class="card border-0">
+                        @RenderBody()
+                        @* RenderBody’den sonra modal partial’ını ekliyorum çünkü modal Html’i sayfa içeriğinden bağımsızdır,
+                           her sayfada erişilebilir olması gerekiyor. Bu sayede RenderBody içindeki tüm sayfalar
+                           tek bir modal yapısını tekrar etmeden kullanabiliyor. *@
+                        @await Html.PartialAsync("Admin/_CreateAdminModal")
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            @await Html.PartialAsync("Admin/_AdminFooter")
+        </div>
+    </div>
+    <!-- Argon Scripts -->
+    @await Html.PartialAsync("Admin/_AdminScript")
+  
+</body>
+
+</html>
